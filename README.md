@@ -7,13 +7,16 @@ To make things easy to follow the examples has extensive logging.
 
 Getting Started
 ---------------
+The only prerequisites for running this Lift example is that you have Git and Java installed and configurated on the target comp.
+If you use Eclipse the project also includes a Eclipse plugin see below   
 
 1) Get the examples
 
 	git clone git@github.com:karma4u101/SEO-Friendly-Menu-Params.git
 	cd SEO-Friendly-Menu-Params
 
-2) Update & Run Jetty
+2) Update & Run Jetty 
+There is also a sbt.bat for windows users.
 
 	./sbt update ~container:start
 

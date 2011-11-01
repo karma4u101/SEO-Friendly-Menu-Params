@@ -1,8 +1,8 @@
 SEO Friendly Menu Params
 ========================
 
-Provides simple examples of menu params usage in Lift with search engine optimization friendly url:s
-Menu entry point ParamTest contains a barebones example wile the Countries menu entry point also uses SEO friendly urls
+Provides simple examples of menu params usage in Lift with search engine optimization friendly url:s.
+Menu entry point ParamTest contains a barebones example wile the Countries menu entry point also uses SEO friendly urls.
 To make things easy to follow the examples has extensive logging. 
 
 Getting Started
@@ -15,7 +15,7 @@ If you use Eclipse the project also includes a Eclipse plugin see below
 	git clone git@github.com:karma4u101/SEO-Friendly-Menu-Params.git
 	cd SEO-Friendly-Menu-Params
 
-2) Update & Run Jetty 
+2) Update & Run Jetty
 There is also a sbt.bat for windows users.
 
 	./sbt update ~container:start

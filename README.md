@@ -16,6 +16,7 @@ If you use Eclipse the project also includes a Eclipse plugin see below
 	cd SEO-Friendly-Menu-Params
 
 2) Update & Run Jetty
+
 There is also a sbt.bat for windows users.
 
 	./sbt update ~container:start

@@ -1,7 +1,7 @@
 SEO Friendly Menu Params
 ========================
 
-This Lift example:s demonstrates Lift's menu param:s (menu.param/menu.params) usage combined with "SEO" (search engine optimization) -friendly url:s.
+This Scala/Lift basic assembly example project demonstrates Lift's menu param:s (menu.param/menu.params) usage combined with "SEO" (search engine optimization) -friendly url:s.
 There are two examples, the "ParamTest" menu entry point contains a "bare-bone" menu.param/menu.params usage example wile the "Countries" menu entry point also utilizes "Search Engine Optimization" -friendly url:s.
 To make things easy to follow the examples has extensive logging. 
 

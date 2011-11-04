@@ -1,14 +1,14 @@
 SEO Friendly Menu Params
 ========================
 
-Provides simple examples of menu params usage in Lift with search engine optimization friendly url:s.
-Menu entry point ParamTest contains a barebones example wile the Countries menu entry point also uses SEO friendly urls.
+This Lift example:s demonstrates Lift's menu param:s (menu.param/menu.params) usage combined with search engine optimization friendly url:s.
+There are two examples, the "ParamTest" menu entry point contains a "bare-bone" menu.param/menu.params usage example wile the "Countries" menu entry point also utilizes "Search Engine Optimization"- (SEO)- friendly url:s.
 To make things easy to follow the examples has extensive logging. 
 
-Getting Started
----------------
-The only prerequisites for running this Lift example is that you have Git and Java installed and configurated on the target comp.
-If you use Eclipse the project also includes a Eclipse plugin see below   
+Quick Start
+-----------
+The only prerequisites for running this Lift example is that you have Git and Java installed and configured on the target computer.
+You don't need to use it but the project also includes a Eclipse plug-in for browsing and following/working with the code, see the Scala IDE section.   
 
 1) Get the examples
 

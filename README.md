@@ -5,6 +5,12 @@ This Scala/Lift basic assembly example project demonstrates Lift's menu param:s 
 There are two examples, the "ParamTest" menu entry point contains a "bare-bone" menu.param/menu.params usage example wile the "Countries" menu entry point also utilizes "Search Engine Optimization" -friendly url:s.
 To make things easy to follow the examples has extensive logging. 
 
+This example is intended for those of you who are relatively new to lift and/or need some compact and concise running example of a particular feature or concept in Lift.
+
+Improvements and suggestions are welcome!
+
+best regards Peter Petersson 
+
 Quick Start
 -----------
 The only prerequisites for running this Lift example is that you have Git and Java installed and configured on the target computer.

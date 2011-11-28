@@ -13,15 +13,13 @@ import scala.collection.mutable.{LinkedHashMap}
 object Countries extends Loggable {
   logger.info("snippet.Countries obj start")
   
-  val ccList:List[Country] = FakeModelData.getCountryList() 
+  val ccList:List[Country]  = Country.getAllList()
   
   lazy val menu = Menu.i("Countries") / "countries"
 
   def render = { "a"        #> ccList.map(
             c => "* [href]" #> ACountry.menu.calcHref(c) & 
-                 "* *" #> (c.name)
-                //"* *" #> (c.name)                 
-                // "* *+" #> (c.id)                  
+                 "* *" #> (c.name)               
         )
   }
   

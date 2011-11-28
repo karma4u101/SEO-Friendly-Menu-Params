@@ -4,7 +4,7 @@ package model
 import net.liftweb._
 import common._
 import util._
-
+import net.liftweb.squerylrecord.RecordTypeMode._
 
 case class P1(id: Int) extends Loggable {
   logger.debug("model.P1 class id="+id)
@@ -12,6 +12,10 @@ case class P1(id: Int) extends Loggable {
 
 object P1 extends Loggable {
   logger.debug("model.P1 object start ")
+  
+  def listAllP1:List[P1] = {
+    from(MySchema.p1)(p => select(p)).toList
+  }  
   
   def unapply(id: String): Option[P1] = { 
     logger.debug("model.P1 unapply id="+id)

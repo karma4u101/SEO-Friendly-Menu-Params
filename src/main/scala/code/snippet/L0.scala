@@ -6,8 +6,8 @@ import common._
 import util._
 import Helpers._
 import sitemap._
-
 import model._
+
 
 //Level 0 
 //The starting point snippet for list of P1 menu params 
@@ -16,8 +16,10 @@ object L0 extends Loggable {
   
   lazy val menu = Menu.i("ParamTest") / "pt"
   
-  def render = { "a" #> FakeModelData.p1List().map(
+  
+  def render = { "a" #> P1.listAllP1.map(
       p1 => "* [href]" #> L1.menu.calcHref(p1) & "* *+" #> p1.id)
-  }   
+  }  
+  
   logger.info("snippet.L0 obj end")
 }

@@ -9,6 +9,7 @@ import http._
 import sitemap._
 import Loc._
 import mapper._
+import net.liftweb.squerylrecord.RecordTypeMode._
 
 import code.model._
 import code.snippet._
@@ -20,25 +21,24 @@ import code.snippet._
  */
 class Boot extends Loggable {
   def boot {
-    if (!DB.jndiJdbcConnAvailable_?) {
-      val vendor = 
-	new StandardDBVendor(Props.get("db.driver") openOr "org.h2.Driver",
-			     Props.get("db.url") openOr 
-			     "jdbc:h2:lift_proto.db;AUTO_SERVER=TRUE",
-			     Props.get("db.user"), Props.get("db.password"))
-
-      LiftRules.unloadHooks.append(vendor.closeAllConnections_! _)
-
-      DB.defineConnectionManager(DefaultConnectionIdentifier, vendor)
-    }
-
-    // Use Lift's Mapper ORM to populate the database
-    // you don't need to use Mapper to use Lift... use
-    // any ORM you want
-    Schemifier.schemify(true, Schemifier.infoF _, User)
-
-    // where to search snippet
+    
+   // where to search snippet
     LiftRules.addToPackages("code")
+    
+    /*un-comment and switch to db of your liking */
+    MySchemaHelper.initSquerylRecordWithInMemoryDB
+    //MySchemaHelper.initSquerylRecordWithMySqlDB
+    //MySchemaHelper.initSquerylRecordWithPostgresDB
+    
+    Props.mode match {
+      case Props.RunModes.Development => { 
+        logger.info("RunMode is DEVELOPMENT") 
+        /*OBS! do no use this in a production env*/
+        MySchemaHelper.dropAndCreateSchema
+        }
+      case Props.RunModes.Production => logger.info("RunMode is PRODUCTION") 
+      case _ => logger.info("RunMode is TEST, PILOT or STAGING")                                       
+    }        
 
     // Build SiteMap
     def sitemap = SiteMap(
@@ -49,16 +49,17 @@ class Boot extends Loggable {
       L0.menu,
       L1.menu,
       L2.menu,
+     
       // more complex because this menu allows anything in the
       // /static path to be visible
       Menu(Loc("Static", Link(List("static"), true, "/static/index"), 
 	       "Static Content")))
 
-    def sitemapMutators = User.sitemapMutator
+    //def sitemapMutators = User.sitemapMutator
 
     // set the sitemap.  Note if you don't want access control for
     // each page, just comment this line out.
-    LiftRules.setSiteMapFunc(() => sitemapMutators(sitemap))
+     LiftRules.setSiteMapFunc(() => sitemap/*sitemapMutators(sitemap)*/)
 
     //Show the spinny image when an Ajax call starts
     LiftRules.ajaxStart =
@@ -72,13 +73,21 @@ class Boot extends Loggable {
     LiftRules.early.append(_.setCharacterEncoding("UTF-8"))
 
     // What is the function to test if a user is logged in?
-    LiftRules.loggedInTest = Full(() => User.loggedIn_?)
+    //LiftRules.loggedInTest = Full(() => User.loggedIn_?)
 
     // Use HTML5 for rendering
     LiftRules.htmlProperties.default.set((r: Req) =>
       new Html5Properties(r.userAgent))    
 
     // Make a transaction span the whole HTTP request
-    S.addAround(DB.buildLoanWrapper)
+    S.addAround(new LoanWrapper
+    {
+    	override def apply[T](f: => T): T = 
+    	{
+    		inTransaction{ f }
+    	}
+    })
+    
+  
   }
 }

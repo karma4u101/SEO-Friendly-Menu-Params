@@ -4,18 +4,33 @@ package model
 import net.liftweb._
 import common._
 import util._
+import org.squeryl.annotations.Column
+import net.liftweb.record._
+import net.liftweb.record.field._
+import net.liftweb.squerylrecord.KeyedRecord
+import net.liftweb.squerylrecord.RecordTypeMode._
 
 
-case class Country (val id: Int,seoUrl:String,name:String) extends Loggable  {
-  logger.debug("model.Country case class with id="+id)
+class Country private() extends Record[Country] with KeyedRecord[Long] with Loggable  {
+  
+  def meta = Country
+  
+  @Column(name="id")
+  override val idField = new LongField(this)	
+  val seoUrl = new StringField(this,50)
+  val name = new StringField(this,50)
 }
 
-object Country extends Loggable {
+object Country extends Country with MetaRecord[Country] with Loggable {
   logger.debug("model.Contry obj start")
   
+  def getAllList():List[Country] = transaction {
+    from(MySchema.country)(c => select(c)).toList
+  } 
+  
   def find(id: String): Box[Country] = {
-    logger.debug("model.Country object find id="+id)
-    val c = FakeModelData.getCountryList().find(_.seoUrl==id)
+    logger.debug("model.Country object find id(string)="+id)
+    val c = getAllList.find(_.seoUrl._1==id)
     logger.debug("model.Country object find found ="+c.toString())
     c
   }
@@ -24,17 +39,6 @@ object Country extends Loggable {
     logger.debug("model.Country:unapply(id="+id+":String) returns Option[Country]")
     find(id)
   }
-
-  def unapply(o: Any): Option[(Int,String,String)] = o match {
-    case o: Country => {
-      logger.debug("model.Country object unapply(o:Any) some o.id="+o.id)
-      Some(o.id,o.seoUrl,o.name)
-    }
-    case _ => { 
-      logger.debug("model.Country object unapply(o:Any) No match returning None")
-      None
-    }
-  }  
  
   logger.debug("model.Contry obj end")
 }

@@ -14,7 +14,7 @@ object ARegion extends Loggable {
   logger.info("snippet.ARegion obj start")
   
   lazy val menu = {
-    Menu.params[(code.model.Country, Region)]("Region", Loc.LinkText(r => Text(r._2.name)), 
+    Menu.params[(code.model.Country, Region)]("Region", Loc.LinkText(r => Text( (r._2.name)._1) ), 
                                   {
                                     case code.model.Country(cid) :: 
                                     Region(rid) :: _ =>

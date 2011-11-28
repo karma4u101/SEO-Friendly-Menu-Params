@@ -13,8 +13,8 @@ import scala.xml.Text
 object ACountry extends Loggable {
   logger.info("snippet.ACountry obj start")
  
-  lazy val menu = { Menu.param[Country]("Country", Loc.LinkText(c => Text(c.name)), 
-                                    Country.find, _.seoUrl) / "countries" / * 
+  lazy val menu = { Menu.param[Country]("Country", Loc.LinkText(c => Text( (c.name._1).toString() )), 
+                                    Country.find, _.seoUrl._1) / "countries" / * 
                                     }
                                  
   logger.info("snippet.ACountry obj end")                                  
@@ -22,8 +22,8 @@ object ACountry extends Loggable {
 
 class ACountry(country: Country) extends Loggable {
   logger.info("snippet.ACountry class start")
-  
-  val reList:List[Region] = FakeModelData.getACountryRegionList().filter(r => r.cid==country.id)
+
+  val reList:List[Region] = Region.getAllList().filter(r => r.cid._1==country.id)
   
   def m: Loc[(Country, Region)] = ARegion.menu
   def render = { 
@@ -33,7 +33,6 @@ class ACountry(country: Country) extends Loggable {
     "* *"      #> (r.name) )     
     } 
   
-
   logger.info("snippet.ACountry class end")
 }
 

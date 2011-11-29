@@ -17,11 +17,11 @@ object DemoData {
 
   private def getCountryList():List[Country] = List(
       Country.createRecord.idField(1).seoUrl(SEOTransform.toSEOFriendly("UNITED KINGDOM")).name("United Kingdom"),
-      Country.createRecord.idField(1).seoUrl(SEOTransform.toSEOFriendly("UNITED STATES")).name("United States"),
-      Country.createRecord.idField(1).seoUrl(SEOTransform.toSEOFriendly("COSTA RICA")).name("Costa Rica"),
-      Country.createRecord.idField(1).seoUrl(SEOTransform.toSEOFriendly("MYANMAR (Burma)")).name("Myanmar (Burma)"),
-      Country.createRecord.idField(1).seoUrl(SEOTransform.toSEOFriendly("PAPUA NEW GUINEA")).name("Papua New Guinea"),
-      Country.createRecord.idField(1).seoUrl(SEOTransform.toSEOFriendly("PUERTO RICO")).name("Puerto Rico")
+      Country.createRecord.idField(2).seoUrl(SEOTransform.toSEOFriendly("UNITED STATES")).name("United States"),
+      Country.createRecord.idField(3).seoUrl(SEOTransform.toSEOFriendly("COSTA RICA")).name("Costa Rica"),
+      Country.createRecord.idField(4).seoUrl(SEOTransform.toSEOFriendly("MYANMAR (Burma)")).name("Myanmar (Burma)"),
+      Country.createRecord.idField(5).seoUrl(SEOTransform.toSEOFriendly("PAPUA NEW GUINEA")).name("Papua New Guinea"),
+      Country.createRecord.idField(6).seoUrl(SEOTransform.toSEOFriendly("PUERTO RICO")).name("Puerto Rico")
       )
 
   private def getACountryRegionList():List[Region] = List(

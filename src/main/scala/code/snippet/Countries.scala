@@ -8,7 +8,6 @@ import common._
 import util._
 import Helpers._
 import sitemap._
-import scala.collection.mutable.{LinkedHashMap}
 
 object Countries extends Loggable {
   logger.info("snippet.Countries obj start")

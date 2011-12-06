@@ -35,6 +35,10 @@ There is also a sbt.bat for windows users.
 	
 	http://localhost:8080/
 
+Database backend
+----------------
+For demonstration purpose and easy setup this example uses a in memory database. 
+
 Scala IDE for Eclipse
 ---------------------
 Sbteclipse provides SBT command to create Eclipse project files

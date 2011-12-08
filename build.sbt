@@ -31,6 +31,7 @@ libraryDependencies ++= {
 libraryDependencies ++= Seq(
   "org.eclipse.jetty" % "jetty-webapp" % "8.0.3.v20111011" % "container",
   //"org.mortbay.jetty" % "jetty" % "6.1.22" % "container", // For Jetty 7
+  "com.jolbox" % "bonecp" % "0.7.1.RELEASE" % "compile->default",
   "javax.servlet" % "servlet-api" % "2.5" % "provided->default",
   "org.slf4j" % "slf4j-log4j12" % "1.6.1" % "compile->default", // Logging
   "junit" % "junit" % "4.8" % "test->default", // For JUnit 4 testing

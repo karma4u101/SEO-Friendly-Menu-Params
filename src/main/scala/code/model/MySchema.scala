@@ -126,7 +126,7 @@ object MySchemaHelper extends Loggable {
     private var pool:BoneCP=null
     private def initPool(db: DBSettings):BoneCP = {
       // create a new configuration object	
-      val config = new BoneCPConfig
+      lazy val config = new BoneCPConfig
       try {
         // load the DB driver class
         Class.forName(db.dbDriver)

@@ -6,6 +6,7 @@ import lib.util._
 object DemoData {
 
   def createDemoData {
+    /*Rewrite to make the db module localization aware for "true" SEO friendliness*/
     getCountryList().foreach(MySchema.country.insert(_))
     getACountryRegionList().foreach(MySchema.region.insert(_))
     p1List().foreach(MySchema.p1.insert(_))

@@ -1,10 +1,13 @@
 SEO Friendly Menu Params
 ========================
 
-This Scala/Lift basic assembly example project demonstrates Lift's menu param:s (menu.param/menu.params) usage combined with "SEO" (search engine optimization) -friendly url:s.
-There are two examples, the "ParamTest" menu entry point contains a "bare-bone" menu.param/menu.params usage example wile the "Countries" menu entry point also utilizes "Search Engine Optimization" -friendly url:s.
-At this point the SEO friendliness dose not include localization of the url:s but a slight change of the db module would realize that (see known issues).   
-To make things easy to follow the examples has extensive logging. 
+This Scala/Lift basic assembly example project demonstrates Lift's menu param:s (menu.param/menu.params) usage combined with a input string transformation to "SEO" (search engine optimization) -friendly url:s using 
+[canonical decomposition](http://weblogs.java.net/blog/joconner/archive/2007/02/normalization_c.html), lower case, replacing space with "-" etc.
+
+There are two examples, the "ParamTest" menu entry point contains a "bare-bone" menu.param/menu.params usage example wile the "Countries" menu entry point also utilizes "Search Engine Optimization" -friendly url:s. 
+To make things easy to follow the examples has extensive logging.
+
+At this point the SEO friendliness dose not include localization of the url:s but a slight change of the db module would realize that (see known issues).  
 
 This _unofficial*_ example is intended for those of you who need some compact and concise running and mostly ;) simple to follow example of a particular 
 feature or concept in Lift.
